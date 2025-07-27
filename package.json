@@ -1,0 +1,20 @@
+{
+  "name": "monorepo-rbac-aws",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "infra",
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "deploy": "npm run deploy --workspace=infra",
+    "dev": "npm run dev --workspace=frontend",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

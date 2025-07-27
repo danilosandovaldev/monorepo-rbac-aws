@@ -1,0 +1,33 @@
+type User {
+  id: ID!
+  email: String!
+  givenName: String!
+  familyName: String!
+  role: String
+  permissions: [String]
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers: [User]
+  me: User
+}
+
+type Mutation {
+  updateUser(id: ID!, input: UpdateUserInput!): User
+  updateUserRole(id: ID!, role: String!): User
+}
+
+input UpdateUserInput {
+  givenName: String
+  familyName: String
+  role: String
+  permissions: [String]
+}
+
+type Subscription {
+  onUserUpdated(id: ID!): User
+    @aws_subscribe(mutations: ["updateUser", "updateUserRole"])
+}
